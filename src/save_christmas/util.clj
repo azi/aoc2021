@@ -9,5 +9,9 @@
 
 (def str->int #(try (Integer/parseInt %) (catch Exception _ex %)))
 
+(defn blank? [v] (if (seqable? v) (empty? v) (not v)))
+
+(def present? (complement blank?))
+
 (comment
   (load-data "day1.txt"))
