@@ -66,3 +66,31 @@
 (def sample (->> (remove empty? (util/load-data "day8.txt"))
                  (mapv parse-data)
                  (apply +)))
+
+
+
+;; ==============================
+;; (defn parse'
+;;   [s]
+;;   (->> s (re-seq #"[a-g]+") (map set) (partition 14) (map #(partition-all 10 %))))
+
+;; (def standard-wiring
+;;   {"abcefg" 0 "cf" 1 "acdeg" 2 "acdfg" 3 "bcdf" 4 "adbfg" 5 "abdefg" 6 "acf" 7 "abcdefg" 8 "abcdfg" 9})
+
+;; (parse' standard-wiring)
+
+;; (def freqs->digit
+;;   (let [freq (->> standard-wiring keys (apply concat) frequencies)]
+;;     (util/fmap-keys #(sort (map freq %)) standard-wiring)))
+
+;; (defn output
+;;   [[signals out-signals]]
+;;   (let [freq   (->> signals (apply concat) frequencies)
+;;         wiring (reduce #(assoc %1 %2 (freqs->digit (sort (map freq %2)))) {} signals)]
+;;     (map wiring out-signals)))
+
+;; (comment
+;;   (time (->> "2021/day08.txt" util/read-input parse'
+;;              (map output)
+;;              (map (fn [ds] (reduce #(+ (* %1 10) %2) 0 ds)))
+;;              (reduce +))))
